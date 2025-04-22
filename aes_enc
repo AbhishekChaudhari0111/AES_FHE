@@ -1,0 +1,17 @@
+
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from Crypto.Random import get_random_bytes
+
+# Replace these with your actual key and plaintext
+key = bytes.fromhex('2b7e151628aed2a6abf7158809cf4f3c')  # Example key (16 bytes for AES-128)
+plaintext = bytes.fromhex('0x320x430xf60xa80x880x5a0x300x8d0x310x310x980xa20xe00x370x070x34')  # Example plaintext
+
+# Initialize AES cipher in ECB mode (you can change mode if needed)
+cipher = AES.new(key, AES.MODE_ECB)
+
+# Encrypt the plaintext
+ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+
+# Print the ciphertext in hex format
+print("Ciphertext (hex):", ciphertext.hex())
